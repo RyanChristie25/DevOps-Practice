@@ -14,8 +14,8 @@ jobs:
         uses: montudor/action-zip@v1
       - name: Create Zip file for Lambda function
         run: zip -r code.zip .
-      - name: AWS CLI v2
-        uses: imehedi/actions-awscli-v2@latest
+      - name: AWS CLI v1
+        uses: aws-actions/configure-aws-credentials@v1
         with:
           args: "lambda update-function-code \
             --function-name arn:aws:RyanChristieFunction \
