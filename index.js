@@ -1,11 +1,11 @@
-const express = require('express')
-const app = express()
-const port = 3000
+const express = require('express');
+const serverless = require('serverless-http');
+const app = express();
+const port = 3000;
 
-app.listen(port, () => {
-    console.log("The server is running on port 3000");
+app.get("/clubs", (req, res) => {
+    res.json(["Soccer", "Padel", "Chess", "Gaming", "Hiking"]);
 });
 
-app.get("/clubs", (req, res, next) => {
-    res.json(["Soccer","Padel","Chess","Gaming","Hiking"]);
-});
+// Wrap the Express app for AWS Lambda
+module.exports.handler = serverless(app);

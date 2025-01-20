@@ -1,0 +1,14 @@
+service: my-node-express-lambda
+
+provider:
+  name: aws
+  runtime: nodejs22.x
+  region: eu-west-1
+
+functions:
+  api:
+    handler: app.handler
+    events:
+      - http:
+          path: /clubs
+          method: get
